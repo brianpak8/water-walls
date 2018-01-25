@@ -1,0 +1,22 @@
+{
+  "name": "water-walls",
+  "version": "1.0.0",
+  "description": "find the walls between which there is the most water",
+  "main": "waterwall.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brianpak8/water-walls.git"
+  },
+  "author": "brian pak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brianpak8/water-walls/issues"
+  },
+  "homepage": "https://github.com/brianpak8/water-walls#readme",
+  "dependencies": {
+    "jest": "^22.1.4"
+  }
+}
