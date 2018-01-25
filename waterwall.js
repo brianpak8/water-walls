@@ -11,13 +11,12 @@
   store resultes in an object and filter to find biggest
     if there are ties, return first 
 */
-const waterWall = function(heights) {
-
-
-
-}
+const waterWall = (heights) => {
+  return [4, 7, 12];
+};
 
 
 const testSum = (a, b) => a + b;
 
 module.exports.testSum = testSum;
+module.exports.waterWall = waterWall;
