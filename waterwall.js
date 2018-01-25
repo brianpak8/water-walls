@@ -3,16 +3,53 @@
 //  and how much water is trapped
 //  constraints: none
 //  edge case:  a height of zero.  Will assume water cannot 'drain'
+//              no water.  return an empty array
 /*  
-  strategy:  start from left
-  check for a wall that is equal or higher, or if at end of array
-    calculate water between walls
-      if at end, use smaller height to calculate
-  store resultes in an object and filter to find biggest
-    if there are ties, return first 
+  strategy:  
+  start from the left
+    find 'right' wall to trap water againts
+    calculate water and store
+    continue
+
+  once all water have been calculated, find the most
+
 */
+
+
+
+
 const waterWall = (heights) => {
-  return [4, 7, 12];
+  const waters = [];
+  for (let i = 0; i < heights.length; i++) {
+    for (let j = i + 2; j < heights.length; j++) {
+      if (heights[j] >= heights[i]) {
+        let water = 0;
+        for (let k = i; k < j; k++) {
+          water += heights[i] - heights[k];
+        }
+        waters.push({
+          left: i + 1,
+          right: j + 1,
+          water: water
+        })
+
+      }
+    }
+  }
+  let biggest = {water: 0};
+  for (let i = 0; i < waters.length; i++) {
+    if (waters[i].water > biggest.water) {
+      biggest = waters[i];
+    }
+  }
+  let output = [];
+  if (!biggest.left) {
+    return [];
+  }
+  output.push(biggest.left);
+  output.push(biggest.right);
+  output.push(biggest.water);
+  return output;
 };
 
 

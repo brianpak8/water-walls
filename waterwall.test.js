@@ -15,3 +15,12 @@ const heights = [5, 2, 3, 7, 1, 1, 7];
 test ('finds 12 water between walls 4 and 7', () => {
   expect(water.waterWall(heights)).toEqual([4, 7, 12]);
 });
+
+test ('should find no water when walls consistently decrease in size', () => {
+  expect(water.waterWall([6, 5, 4, 3, 2, 1])).toEqual([]);
+});
+
+test('should return the first set of walls in case of ties', () => {
+  expect(water.waterWall([3, 1, 3, 1, 3])).toEqual([1, 3, 2]);
+});
+
