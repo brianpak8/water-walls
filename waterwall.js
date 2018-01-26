@@ -21,45 +21,23 @@
 const waterWall = (heights) => {
   const waters = [];
   loop1:
-  // left wall
   for (let i = 0; i < heights.length; i++) {
-    loop2:
-    //  right wall
     for (let j = i + 2; j < heights.length; j++) {
-      if (heights[j] >= heights[i]) {
-        let water = 0;
-        // subtract walls in between
-        for (let k = i; k < j; k++) {
-          water += heights[i] - heights[k];
-        }
-        waters.push({
-          //  add one to account for arrays being zero indexed
-          left: i + 1,
-          right: j + 1,
-          water: water
-        })
-        continue loop1;
+      let lower = heights[i];
+      if (lower > heights[j]) {
+        lower = heights[j];
       }
-    }
-  }
-  loop3:
-  for (let i = heights.length - 1; i >= 0; i--) {
-    loop4:
-    //  right wall
-    for (let j = i - 2; j >= 0; j--) {
+      let water = 0;
+      for (let k = i + 1; k < j; k++) {
+        water += lower - heights[k];
+      }
+      waters.push({
+        left: i + 1,
+        right: j + 1,
+        water: water
+      })
       if (heights[j] >= heights[i]) {
-        let water = 0;
-        // subtract walls in between
-        for (let k = j; k < i; k++) {
-          water += heights[k] - heights[i];
-        }
-        waters.push({
-          //  add one to account for arrays being zero indexed
-          left: j + 1,
-          right: i + 1,
-          water: water
-        })
-        continue loop3;
+        continue loop1;
       }
     }
   }
