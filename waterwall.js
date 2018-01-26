@@ -4,8 +4,8 @@
 //  constraints: none
 //  edge case:  a height of zero.  Will assume water cannot 'drain'
 //              no water.  return an empty array
-/*  
-  strategy:  
+/*
+  strategy:
   start from the left
     find 'right' wall to trap water againts
     calculate water and store
@@ -39,6 +39,27 @@ const waterWall = (heights) => {
           water: water
         })
         continue loop1;
+      }
+    }
+  }
+  loop3:
+  for (let i = heights.length - 1; i >= 0; i--) {
+    loop4:
+    //  right wall
+    for (let j = i - 2; j >= 0; j--) {
+      if (heights[j] >= heights[i]) {
+        let water = 0;
+        // subtract walls in between
+        for (let k = j; k < i; k++) {
+          water += heights[k] - heights[i];
+        }
+        waters.push({
+          //  add one to account for arrays being zero indexed
+          left: j + 1,
+          right: i + 1,
+          water: water
+        })
+        continue loop3;
       }
     }
   }
