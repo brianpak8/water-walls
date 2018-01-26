@@ -21,15 +21,19 @@
 const waterWall = (heights) => {
   const waters = [];
   loop1:
+  // left wall
   for (let i = 0; i < heights.length; i++) {
     loop2:
+    //  right wall
     for (let j = i + 2; j < heights.length; j++) {
       if (heights[j] >= heights[i]) {
         let water = 0;
+        // subtract walls in between
         for (let k = i; k < j; k++) {
           water += heights[i] - heights[k];
         }
         waters.push({
+          //  add one to account for arrays being zero indexed
           left: i + 1,
           right: j + 1,
           water: water
@@ -53,7 +57,10 @@ const waterWall = (heights) => {
   output.push(biggest.water);
   return output;
 };
+/*
+this doesn't work if the left most wall is the tallest
 
+*/
 
 const testSum = (a, b) => a + b;
 
