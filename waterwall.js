@@ -20,7 +20,9 @@
 
 const waterWall = (heights) => {
   const waters = [];
+  loop1:
   for (let i = 0; i < heights.length; i++) {
+    loop2:
     for (let j = i + 2; j < heights.length; j++) {
       if (heights[j] >= heights[i]) {
         let water = 0;
@@ -32,7 +34,7 @@ const waterWall = (heights) => {
           right: j + 1,
           water: water
         })
-
+        continue loop1;
       }
     }
   }
